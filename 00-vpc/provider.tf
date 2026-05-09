@@ -1,25 +1,17 @@
 terraform {
+
+  required_version = ">= 1.0"
+
+  # backend "s3" {
+  #   bucket = "remote-state-aws-88s-dev-407"
+  #   key    = "00-vpc/terraform.tfstate"
+  #   region = "us-east-1"
+  # }
+
   required_providers {
     aws = {
-      source = "hashicorp/aws"
-      version = "6.33.0" # Terraform AWS provider version
+      source  = "hashicorp/aws"
+      version = "6.33.0"
     }
   }
-
-  backend "s3" {
-    bucket  = "remote-state-aws-88s-dev-407" # Replace with your unique bucket name
-    key     = "terraform-eks-vpc"
-    region  = "us-east-1"
-    encrypt = true
-    use_lockfile   = true
-  }
 }
-
-provider "aws" {
-  region = "us-east-1"
-}
-/* 
-provider "aws" {
-  region = "us-east-1"
-  alias  = aws_hyd
-} */
